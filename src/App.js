@@ -1,17 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, Col, Container, Form, FormControl, Row} from 'react-bootstrap';
+import {Button, Col, Container, Form, FormControl, Image, Row} from 'react-bootstrap';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Container>
+      <Container className="login-field">
         <Row>
           <Col>
-            <Form className="form">      
+            <Image src="chat-4-128.png"/>
+            <h1 className="text-success mb-4">Chat App</h1>
+            <Form>      
               <Form.Group controlId="username">
-                <Form.Label>Chat App</Form.Label>
-                <FormControl type="text" placeholder="Insert your username" className="input-size" />
+                <FormControl size="lg" type="text" placeholder="Insert your username" className="input-size" />
               </Form.Group>
               <Button variant="outline-success">Login</Button>     
             </Form>
