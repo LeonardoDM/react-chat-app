@@ -1,6 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Col, Container, Form, FormControl, Image, Row} from 'react-bootstrap'
+import './styles.css'
 import {Link} from 'react-router-dom'
 
 export default function Login() {
@@ -12,7 +13,7 @@ export default function Login() {
 		            <h1 className="text-success mb-4">Chat App</h1>
 		            <Form>      
 		              <Form.Group controlId="username">
-		                <FormControl size="lg" type="text" placeholder="Insert your username" className="input-size" />
+		                <FormControl size="md" type="text" placeholder="Insert your username" className="input-size" />
 		              </Form.Group>
 		              <Link to="/chat"><Button variant="outline-success">Login</Button></Link>
 		            </Form>
