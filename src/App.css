@@ -32,11 +32,10 @@ h1 {
 }
 
 .login-field{
-  max-width: 450px;
-  width: 100%;
+  max-width: 450px !important;/*450px*/
   padding-top: 30px;
   padding-bottom: 30px;
-  margin: 250px auto;
+  margin-top: 250px;
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 5px;
 }
@@ -45,4 +44,11 @@ h1 {
   width: 80%;
   text-align: center;
   margin: auto;
+}
+
+@media only screen and (max-width: 600px){
+  .login-field {
+    max-width: 85% !important;/*325px*/
+    margin-top: 125px;
+  }
 }
