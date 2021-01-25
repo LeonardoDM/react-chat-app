@@ -2,11 +2,18 @@ nav {
 	background-color: rgba(255, 255, 255, 0.75);
 }
 
-.container-height{
-	background-color: yellow;
-	height: 100%;
+.card-height{
+	height: 100vh;
 }
 
 .chat-box{
-	background-color: red;
+	overflow: auto;
+}
+
+.nav-link{
+	color: #000;
+}
+
+.nav-link:hover{
+	color: #28a745;
 }
