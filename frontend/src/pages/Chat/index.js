@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Card, Container, Col, Form, FormControl, InputGroup, Nav, Row, Tab, TabPane} from 'react-bootstrap'
+import {Button, Card, Container, Col, Form, FormControl, InputGroup, Nav, Row} from 'react-bootstrap'
 import Users from '../../components/users'
 import Talk from '../../components/talk'
 
@@ -58,7 +58,3 @@ export default function Chat() {
 		</Container>
 	)
 }
-
-/*<Tab.Content>
-	{key === 'talk' ? <TabPane id="talk" className="active"><Talk/></TabPane> : <TabPane id="users" className="active"><Users/></TabPane>}
-</Tab.Content>*/
