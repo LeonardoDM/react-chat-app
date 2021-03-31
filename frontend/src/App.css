@@ -15,7 +15,7 @@ html, body, #root {
 }
 
 body {
-  background-image: linear-gradient(#28a745, #9fe0a4);
+  background: #9fe0a4 url('images/watercolour-green.jpg') no-repeat;
   -webkit-font-smoothing: antialiased !important;
 }
 

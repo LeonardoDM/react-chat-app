@@ -47,7 +47,7 @@ export default function Chat() {
 								      aria-describedby="basic-addon2"
 								    />
 								    <InputGroup.Append>
-								      <Button variant="outline-success" type="submit">></Button>
+								      <Button variant="outline-success" type="submit">⮞</Button>
 								    </InputGroup.Append>
 								</InputGroup>
 							</Form>
