@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import socket from 'socket.io-client'
 import './styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Card, Container, Col, Form, FormControl, InputGroup, Nav, Row} from 'react-bootstrap'
@@ -7,9 +8,14 @@ import Talk from '../../components/talk'
 
 export default function Chat() {
 	const [key, setKey] = useState('talk')
+	const [msg, setMsg] = useState('')
+	console.log(msg)
+
 
 	async function handleSubmit(event){
 		event.preventDefault()
+
+
 	}
 	
 	return (
@@ -36,13 +42,15 @@ export default function Chat() {
 						    </Nav>
 						</Card.Header>
 						<Card.Body className="chat-box">
-							{key === 'talk' ? <Talk /> : <Users />}
+							{key === 'talk' ? <Talk msg={msg}/> : <Users />}
 						</Card.Body>
 						<Card.Footer>
 							<Form onSubmit={handleSubmit}>
 								<InputGroup className="my-2">
 									<FormControl
-								      placeholder="Type your message..."
+								      value={msg}
+									  onChange={event => {setMsg(event.target.value)}}
+									  placeholder="Type your message..."
 								      aria-label="Type your message..."
 								      aria-describedby="basic-addon2"
 								    />
