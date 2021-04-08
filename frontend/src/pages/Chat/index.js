@@ -1,21 +1,26 @@
 import React, {useState} from 'react'
-import socket from 'socket.io-client'
+import io from 'socket.io-client'
 import './styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Card, Container, Col, Form, FormControl, InputGroup, Nav, Row} from 'react-bootstrap'
 import Users from '../../components/users'
 import Talk from '../../components/talk'
+const socket = io('http://localhost:3333')
 
 export default function Chat() {
 	const [key, setKey] = useState('talk')
 	const [msg, setMsg] = useState('')
 	console.log(msg)
 
+	socket.on('connection', () => {
+		console.log('connected to backend')
+	})
 
-	async function handleSubmit(event){
+
+	function handleSubmit(event){
 		event.preventDefault()
-
-
+		socket.emit('chat message', msg)
+		setMsg('')
 	}
 	
 	return (
@@ -42,7 +47,7 @@ export default function Chat() {
 						    </Nav>
 						</Card.Header>
 						<Card.Body className="chat-box">
-							{key === 'talk' ? <Talk msg={msg}/> : <Users />}
+							{key === 'talk' ? <Talk msg={msg} socket={socket}/> : <Users />}
 						</Card.Body>
 						<Card.Footer>
 							<Form onSubmit={handleSubmit}>

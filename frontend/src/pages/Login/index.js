@@ -8,7 +8,7 @@ export default function Login() {
 	const [user, setUser] = useState('')
 
 	function handleSubmit(){
-		
+		const response = {user}
 	}
 
 	return (
@@ -21,7 +21,7 @@ export default function Login() {
 		              <Form.Group controlId="username">
 		                <FormControl value={user} size="md" type="text" onChange={event => {setUser(event.target.value)}} placeholder="Insert your username" className="input-size" />
 		              </Form.Group>
-		              <Link to="/chat"><Button variant="outline-success">Login</Button></Link>
+		              <Link to="/chat"><Button type="submit" variant="outline-success">Login</Button></Link>
 		            </Form>
 		        </Col>
 	        </Row>
