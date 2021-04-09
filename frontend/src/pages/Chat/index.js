@@ -3,24 +3,23 @@ import io from 'socket.io-client'
 import './styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Card, Container, Col, Form, FormControl, InputGroup, Nav, Row} from 'react-bootstrap'
-import Users from '../../components/users'
 import Talk from '../../components/talk'
 const socket = io('http://localhost:3333')
 
 export default function Chat() {
 	const [key, setKey] = useState('talk')
 	const [msg, setMsg] = useState('')
-	console.log(msg)
 
 	socket.on('connection', () => {
 		console.log('connected to backend')
 	})
 
-
 	function handleSubmit(event){
 		event.preventDefault()
-		socket.emit('chat message', msg)
-		setMsg('')
+		if(msg !== ''){
+			socket.emit('chat message', msg)
+			setMsg('')
+		}
 	}
 	
 	return (
@@ -31,7 +30,7 @@ export default function Chat() {
 						<Card.Header>
 							<Nav variant="tabs" defaultActiveKey="talk" className="nav-fill">
 						      <Nav.Item>
-						        <Nav.Link eventKey="talk" onClick={event => {setKey('talk')}}>
+						        <Nav.Link eventKey="talk" onClick={() => {setKey('talk')}}>
 						        	<img
 								        alt=""
 								        src="/chat-4-128.png"
@@ -42,12 +41,12 @@ export default function Chat() {
 						        </Nav.Link>
 						      </Nav.Item>
 						      <Nav.Item>
-						        <Nav.Link eventKey="users" onClick={event => {setKey('users')}}>Users Online</Nav.Link>
+						        <Nav.Link eventKey="users" onClick={() => {setKey('users')}}>Users Online</Nav.Link>
 						      </Nav.Item>
 						    </Nav>
 						</Card.Header>
 						<Card.Body className="chat-box">
-							{key === 'talk' ? <Talk msg={msg} socket={socket}/> : <Users />}
+							<Talk key2={key} socket={socket}/>
 						</Card.Body>
 						<Card.Footer>
 							<Form onSubmit={handleSubmit}>
