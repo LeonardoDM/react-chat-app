@@ -2,13 +2,17 @@ import React, {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Button, Col, Container, Form, FormControl, Image, Row} from 'react-bootstrap'
 import './styles.css'
-import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 export default function Login() {
 	const [user, setUser] = useState('')
+	const history = useHistory()
 
-	function handleSubmit(){
-		const response = {user}
+	function handleSubmit(event){
+		event.preventDefault()
+		history.push({pathname: "/chat",
+			state: user
+		})
 	}
 
 	return (
@@ -21,7 +25,7 @@ export default function Login() {
 		              <Form.Group controlId="username">
 		                <FormControl value={user} size="md" type="text" onChange={event => {setUser(event.target.value)}} placeholder="Insert your username" className="input-size" />
 		              </Form.Group>
-		              <Link to="/chat"><Button type="submit" variant="outline-success">Login</Button></Link>
+		              <Button type="submit" variant="outline-success">Login</Button>
 		            </Form>
 		        </Col>
 	        </Row>

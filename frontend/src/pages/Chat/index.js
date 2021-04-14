@@ -6,9 +6,11 @@ import {Button, Card, Container, Col, Form, FormControl, InputGroup, Nav, Row} f
 import Talk from '../../components/talk'
 const socket = io('http://localhost:3333')
 
-export default function Chat() {
+export default function Chat(props) {
 	const [key, setKey] = useState('talk')
 	const [msg, setMsg] = useState('')
+	console.log(props)
+	const username = props.location.state
 
 	socket.on('connection', () => {
 		console.log('connected to backend')
@@ -46,7 +48,7 @@ export default function Chat() {
 						    </Nav>
 						</Card.Header>
 						<Card.Body className="chat-box">
-							<Talk key2={key} socket={socket}/>
+							<Talk key2={key} socket={socket} username={username}/>
 						</Card.Body>
 						<Card.Footer>
 							<Form onSubmit={handleSubmit}>

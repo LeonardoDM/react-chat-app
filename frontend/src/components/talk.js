@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-export default function Talk({key2, socket}){
+export default function Talk({key2, socket, username}){
 	const [chat, setChat] = useState([])
 
 	useEffect(() => {
