@@ -10,14 +10,14 @@ const io = require('socket.io')(server, {
 
 io.on('connection', (socket) => {
     console.log('an user connected')
-    socket.emit('connection', null);
+    socket.emit('connection', null)
     
     socket.on('disconnect', () => {
-      console.log('user disconnected');
+      console.log('user disconnected')
     })
 
-    socket.on('chat message', (msg) => {
-      io.emit('chat message', msg);
+    socket.on('chat message', ({username, msg}) => {
+      io.emit('chat message', {username, msg})
     })
 })
 

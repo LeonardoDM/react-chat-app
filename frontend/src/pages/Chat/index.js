@@ -19,7 +19,7 @@ export default function Chat(props) {
 	function handleSubmit(event){
 		event.preventDefault()
 		if(msg !== ''){
-			socket.emit('chat message', msg)
+			socket.emit('chat message', {username, msg})
 			setMsg('')
 		}
 	}
@@ -48,7 +48,7 @@ export default function Chat(props) {
 						    </Nav>
 						</Card.Header>
 						<Card.Body className="chat-box">
-							<Talk key2={key} socket={socket} username={username}/>
+							<Talk key2={key} socket={socket}/>
 						</Card.Body>
 						<Card.Footer>
 							<Form onSubmit={handleSubmit}>
