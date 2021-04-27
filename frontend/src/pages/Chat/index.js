@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import io from 'socket.io-client'
 import './styles.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -6,20 +6,20 @@ import {Button, Card, Container, Col, Form, FormControl, InputGroup, Nav, Row} f
 import Talk from '../../components/talk'
 const socket = io('http://localhost:3333')
 
-export default function Chat(props) {
+export default function Chat() {
 	const [key, setKey] = useState('talk')
 	const [msg, setMsg] = useState('')
-	console.log(props)
-	const username = props.location.state
 
-	socket.on('connection', () => {
-		console.log('connected to backend')
+	useEffect(() => {
+		socket.on('connection', () => {
+			console.log('connected to backend')
+		})
 	})
-
-	function handleSubmit(event){
-		event.preventDefault()
+	
+	function handleSubmit(e){
+		e.preventDefault()
 		if(msg !== ''){
-			socket.emit('chat message', {username, msg})
+			socket.emit('message', msg)
 			setMsg('')
 		}
 	}
@@ -55,7 +55,7 @@ export default function Chat(props) {
 								<InputGroup className="my-2">
 									<FormControl
 								      value={msg}
-									  onChange={event => {setMsg(event.target.value)}}
+									  onChange={e => {setMsg(e.target.value)}}
 									  placeholder="Type your message..."
 								      aria-label="Type your message..."
 								      aria-describedby="basic-addon2"
